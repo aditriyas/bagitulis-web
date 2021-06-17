@@ -1,0 +1,26 @@
+.page-success {
+  .row-home {
+    min-height: 75vh;
+  }
+  .section-success {
+    h2 {
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+      color: #0c0d36;
+      margin-top: 0;
+    }
+    p {
+      font-weight: normal;
+      font-size: 16px;
+      text-align: center;
+
+      color: black;
+    }
+
+    .btn-signup {
+      @include button-variant(#f3f3f3, transparent);
+      color: #bbbbbb;
+    }
+  }
+}
