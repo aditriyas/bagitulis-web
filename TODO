@@ -1,0 +1,11 @@
+MAIN FEATURE :
+    ☐ Multi role (User dan Admin)
+    ☐ Guest bisa view
+    ☐ Guest bisa download
+
+User Feature:
+    ☐ CRUD File
+
+Admin Feature:
+    ☐ Manajemen User
+    ☐ Manajemen File
