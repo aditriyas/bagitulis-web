@@ -20,11 +20,6 @@
           <p class="dashboard-subtitle">Manage Your Writings & Uploads</p>
         </div>
         <div class="dashboard-content">
-          <div class="row">
-            <div class="col-12">
-              <a href="{{ route('member.product.create') }}" class="btn btn-success">Add New File</a>
-            </div>
-          </div>
           <div class="row mt-4">
             <div class="col-lg-3 col-md-6 col-sm-12 my-1">
               <a class="card card-dashboard-product d-block" href="/dashboard-products-details.html">
@@ -77,6 +72,3 @@
     </div>
   </div>
 @endsection
-
-
-
