@@ -7,8 +7,8 @@
         data-aos="fade-down"
         >
         <div class="container">
-            <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="/images/navbar-logo.svg" class="w-25" alt="" />
+            <a class="navbar-brand" href="{{ url('/') }}">
+            <img src="{{asset('images/navbar-logo.svg')}}" class="w-25" alt="" />
             </a>
             <button
             class="navbar-toggler"
@@ -27,13 +27,10 @@
                 <a class="nav-link" href="{{ route('collection') }}">Collection</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="/register.html">Sign Up</a>
+                <a class="nav-link" href="{{ route('register') }}">Sign Up</a>
                 </li>
                 <li class="nav-item">
-                <a
-                    class="btn btn-success nav-link px-4 text-white"
-                    href="/login.html"
-                    >Sign In</a
+                <a class="btn btn-success nav-link px-4 text-white" href="{{ route('login') }}">Sign In</a
                 >
                 </li>
             </ul>

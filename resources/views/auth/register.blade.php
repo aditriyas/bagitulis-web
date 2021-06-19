@@ -1,160 +1,109 @@
-@extends('layouts.auth')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
 
-    <div class="page-content page-auth mt-8" id="register">
-      <div class="section-store-auth" data-aos="fade-up">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-4">
-              <form class="mt-3">
-                <div class="form-group">
-                  <label>Full Name</label>
-                  <input
-                    type="text"
-                    class="form-control is-valid"
-                    aria-describedby="nameHelp"
-                    v-model="name"
-                    autofocus
-                  />
-                </div>
-                <div class="form-group">
-                  <label>Email</label>
-                  <input
-                    type="email"
-                    class="form-control is-invalid"
-                    aria-describedby="emailHelp"
-                    v-model="email"
-                  />
-                </div>
-                <div class="form-group">
-                  <label>Password</label>
-                  <input type="password" class="form-control" />
-                </div>
-                <a href="/dashboard.html" class="btn btn-success btn-block mt-4"
-                  >Sign Up Now</a
-                >
-                <a href="/login.html" class="btn btn-signup btn-block mt-2"
-                  >Back to Sign In</a
-                >
-              </form>
+  <title>Bagitulis - Share Your Writings</title>
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link href="{{asset('style/main.css')}}" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="{{asset('images/logo-title.svg')}}" />
+</head>
+
+<body>
+  <nav class="
+        navbar navbar-expand-lg navbar-light navbar-store
+        fixed-top
+        navbar-fixed-top
+      " data-aos="fade-down">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <img src="{{asset('images/navbar-logo.svg')}}" class="w-25" />
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/collection.html">Collection</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page-content page-auth mt-8" id="register">
+    <div class="section-store-auth" data-aos="fade-up">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-4">
+            <form action="{{ route('register') }}" method="post" class="mt-3">
+                @csrf
+              <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" autofocus />
+                @error('name')
+                    <small class="text-muted">{{ $message }}</small>
+                @enderror
             </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" />
+                @error('email')
+                    <small class="text-muted">{{ $message }}</small>
+                @enderror
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" />
+                @error('password')
+                    <small class="text-muted">{{ $message }}</small>
+                @enderror
+              </div>
+              <div class="form-group">
+                <label>Ulangi Password</label>
+                <input type="password" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" />
+                @error('password_confirmation')
+                    <small class="text-muted">{{ $message }}</small>
+                @enderror
+            </div>
+              <button type="submit" class="btn btn-success btn-block mt-4">Sign Up Now</button>
+              <a href="{{ route('login') }}" class="btn btn-secondary btn-block mt-2">Back to Sign In</a>
+            </form>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-
-
-
-    <div class="container" style="display : none;">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <p class="pt-4 pb-2">
+            2021 Copyright Bagitulis. All Rights Reserved <br />
+            Aditya Triyaswanda
+          </p>
         </div>
+      </div>
     </div>
-</div>
-@endsection
-
-@push('addon-script')
-    <script src="/vendor/jquery/jquery.slim.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
+  </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="{{asset('vendor/jquery/jquery.slim.min.js')}}"></script>
+  <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
     AOS.init();
-    </script>
-    <script src="/vendor/vue/vue.js"></script>
-    <script src="https://unpkg.com/vue-toasted"></script>
-    <script>
-    Vue.use(Toasted);
+  </script>
+  <script src="{{asset('script/navbar-scroll.js')}}"></script>
+</body>
 
-    var register = new Vue({
-        el: "#register",
-        mounted() {
-          AOS.init();
-          this.$toasted.error(
-            "Maaf, tampaknya email sudah terdaftar pada sistem kami.",
-            {
-              position: "top-center",
-              className: "rounded",
-              duration: 1000,
-            }
-          );
-        },
-        data: {
-          name: "",
-          email: "",
-          password: "",
-          is_store_open: true,
-          store_name: "",
-        },
-      });
-    </script>
-    <script src="/script/navbar-scroll.js"></script>
-@endpush
+</html>

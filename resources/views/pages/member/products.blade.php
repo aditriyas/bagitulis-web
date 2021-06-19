@@ -26,7 +26,24 @@
             </div>
           </div>
           <div class="row mt-4">
-            <div class="col-lg-3 col-md-6 col-sm-12 my-1">
+              @foreach($files as $file)
+                <div class="col-lg-3 col-md-6 col-sm-12 my-1">
+                    <a class="card card-dashboard-product d-block" href="{{ route('member.product.show', ['id' => $file->id ]) }}">
+                        <div class="card-body">
+                            <img src="{{ asset('thumbnails/'.$file->thumbnail)}}" alt="" class="w-100 mb-2" />
+                            <div class="product-title">
+                                <blockquote class="blockquote">
+                                    <p class="mb-1">
+                                        {{ $file->title }}
+                                    </p>
+                                    <footer class="blockquote-footer mt-0">{{ $file->author }}</footer>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+              @endforeach
+            {{-- <div class="col-lg-3 col-md-6 col-sm-12 my-1">
               <a class="card card-dashboard-product d-block" href="/dashboard-products-details.html">
                 <div class="card-body">
                   <img src="/images/contoh-jurnal-1.jpg" alt="" class="w-100 mb-2" />
@@ -70,7 +87,7 @@
                   </div>
                 </div>
               </a>
-            </div>
+            </div> --}}
           </div>
         </div>
       </div>

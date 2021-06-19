@@ -22,38 +22,39 @@
         <div class="dashboard-content">
           <div class="row">
             <div class="col-12">
-              <form action="">
+              <form action="{{ route('member.product.store') }}" method="post" enctype="multipart/form-data">
+                @csrf
                 <div class="card">
                   <div class="card-body">
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="name">Title</label>
-                          <input type="text" class="form-control" id="title" aria-describedby="name" name="title" value=""/>
+                          <input type="text" class="form-control @error('name') is-invalid @enderror" id="title" aria-describedby="name" name="title" value="{{ old('name') }}"/>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="name">Author</label>
-                          <input type="text" class="form-control" id="author" aria-describedby="name" name="author" value=""/>
+                          <input type="text" class="form-control @error('author') is-invalid @enderror" id="author" aria-describedby="name" name="author" value="{{ old('author') }}"/>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
                           <label for="description">Description</label>
-                          <textarea name="descrioption" id="" cols="30" rows="4" class="form-control"></textarea>
+                          <textarea name="description" id="" cols="30" rows="4" class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
                           <label for="thumbnails">Thumbnails</label>
-                          <input type="file" class="form-control pt-1" id="thumbnails" aria-describedby="thumbnails" name="thumbnails"/>
+                          <input type="file" class="form-control pt-1" accept=".jpg, .png" name="thumbnail"/>
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
                           <label for="thumbnails">File</label>
-                          <input type="file" class="form-control pt-1" id="writingFile" aria-describedby="writingFile" name="thumbnails"/>
+                          <input type="file" class="form-control pt-1" accept=".pdf" id="writingFile" name="file"/>
                           <small class="text-muted"> </small>
                         </div>
                       </div>

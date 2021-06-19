@@ -7,13 +7,12 @@
   <meta name="description" content=""/>
   <meta name="author" content=""/>
 
-  <title>Dashboard - {{ config('name') }}</title>
+  <title>Bagitulis</title>
 
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <link href="{{ asset('style/main.css') }}" rel="stylesheet" />
   <link rel="icon" type="image/png" href="{{ asset('images/logo-title.svg')}}" />
   @stack('css')
-
 </head>
 
 <body>
@@ -33,20 +32,25 @@
           <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             <img src="{{ asset('images/icon-user.png')}}" alt="" class="rounded-circle mr-2 profile-picture" />
-            Hi, Rizki
+            Hi, {{ Auth::user()->name }}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="/index.html">Home</a>
             <a class="dropdown-item" href="/dashboard-products-update.html">Update Writings</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/">Logout</a>
+            <a href="{{ route('logout') }}" class='dropdown-item' onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">Logout</a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
           </div>
         </li>
       </ul>
       <!-- Mobile Menu -->
       <ul class="navbar-nav d-block d-lg-none mt-3">
         <li class="nav-item">
-          <a class="nav-link" href="#"> Hi, Rizki </a>
+          <a class="nav-link" href="#"> Hi, {{ Auth::user()->name }} </a>
         </li>
         <li class="nav-item">
           <a class="nav-link d-inline-block" href="index.html"> Home </a>
