@@ -21,51 +21,24 @@
         </div>
         <div class="dashboard-content">
           <div class="row mt-4">
-            <div class="col-lg-3 col-md-6 col-sm-12 my-1">
-              <a class="card card-dashboard-product d-block" href="/dashboard-products-details.html">
-                <div class="card-body">
-                  <img src="/images/contoh-jurnal-1.jpg" alt="" class="w-100 mb-2" />
-                  <div class="product-title">
-                    Akuntansi Pertanggung Jawaban Dengan Pengendalian
-                    Biaya
-                  </div>
+            @foreach($files as $file)
+                <div class="col-lg-3 col-md-6 col-sm-12 my-1">
+                    <a class="card card-dashboard-product d-block" href="{{ route('admin.product.show', ['id' => $file->id ]) }}">
+                        <div class="card-body">
+                            <img src="{{ asset('thumbnails/'.$file->thumbnail)}}" alt="" class="w-100 mb-2" />
+                            <div class="product-title">
+                                <blockquote class="blockquote">
+
+                                    <strong class="mb-1">
+                                        {{ Str::words($file->title, 5, ' ...') }}
+                                    </strong>
+                                    <footer class="blockquote-footer mt-0">{{ $file->author }}</footer>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-              </a>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 my-1">
-              <a class="card card-dashboard-product d-block" href="/dashboard-products-details.html">
-                <div class="card-body">
-                  <img src="/images/contoh-jurnal-2.jpg" alt="" class="w-100 mb-2" />
-                  <div class="product-title">
-                    Analisa Mengenai Efisiensi Penggunaan Modal Kerja pada
-                    CV. Anugerah Ditinjau Dari Segi Profitabilitas Dan
-                    Likuiditas
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 my-1">
-              <a class="card card-dashboard-product d-block" href="/dashboard-products-details.html">
-                <div class="card-body">
-                  <img src="/images/contoh-jurnal-3.jpg" alt="" class="w-100 mb-2" />
-                  <div class="product-title">
-                    Analisis Dampak Jangka Panjang Merger Dan Akuisisi
-                    Terhadap Kinerja Keuangan Perusahaan Pengakusi
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 my-1">
-              <a class="card card-dashboard-product d-block" href="/dashboard-products-details.html">
-                <div class="card-body">
-                  <img src="/images/contoh-jurnal-4.jpg" alt="" class="w-100 mb-2" />
-                  <div class="product-title">
-                    Analisis Faktor – Faktor Yang Mempengaruhi Inflasi Di
-                    Indonesia Tahun 1990 – 2005
-                  </div>
-                </div>
-              </a>
-            </div>
+              @endforeach
           </div>
         </div>
       </div>

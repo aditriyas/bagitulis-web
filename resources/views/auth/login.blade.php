@@ -29,11 +29,8 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Home </a>
-          </li>
           <li class="nav-item">
-            <a class="nav-link" href="/collection.html">Collection</a>
+            <a class="nav-link" href="{{ route('collection') }}">Collection</a>
           </li>
         </ul>
       </div>

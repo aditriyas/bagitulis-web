@@ -38,19 +38,19 @@
       <div class="container">
         <div class="row align-items-center row-login justify-content-center">
           <div class="col-lg-6 text-center">
-            <img src="{{ asset('thumbnails/'.$file->thumbnail) }}" alt="" class="mb-4 w-100 rounded" />
+              <img src="{{ asset('thumbnails/'.$file->thumbnail) }}" alt="" class="mb-4 w-100 rounded" />
             <div class="products-text">
               <strong>{{ $file->title }}</strong>
             </div>
             <div class="products-price mt-2">by {{ $file->author }}</div>
             <a href="{{ asset('files/'.$file->file) }}" target="_blank" class="btn btn-success w-50 mt-3">Download</a>
 
-            @if (Auth::user()->id == $file->user_id)
-                <a href="{{ route('member.product.edit', ['id' => $file->id]) }}" class="btn btn-warning w-50 mt-3">Edit</a>
-                <a href="{{ route('member.product.destroy', ['id' => $file->id]) }}" class='btn btn-danger w-50 mt-1' onclick="event.preventDefault();
+            @if (Auth::user()->role == "admin")
+                <a href="{{ route('admin.product.edit', ['id' => $file->id]) }}" class="btn btn-warning w-50 mt-3">Edit</a>
+                <a href="{{ route('admin.product.destroy', ['id' => $file->id]) }}" class='btn btn-danger w-50 mt-1' onclick="event.preventDefault();
                         document.getElementById('delete-form').submit();">Hapus</a>
 
-                <form id="delete-form" action="{{ route('member.product.destroy', ['id' => $file->id]) }}" method="POST" class="d-none">
+                <form id="delete-form" action="{{ route('admin.product.destroy', ['id' => $file->id]) }}" method="POST" class="d-none">
                     @csrf
                     @method('delete')
                 </form>

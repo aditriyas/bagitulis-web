@@ -62,15 +62,15 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-lg-12">
-                        <form action="" method="post">
+                        <form action="{{ route('admin.users.update') }}" method="post" id="form-update">
                             @csrf
                             @method('put')
                             <input type="hidden" name="id">
                             <div class="form-group">
-                                <input type="text"class="form-control" name="name" placeholder="Nama">
+                                <input type="text"class="form-control" name="name" placeholder="Nama" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" name="email" placeholder="Email" disabled>
+                                <input type="email" class="form-control" name="email" placeholder="Email" readonly>
                             </div>
                             <div class="form-group">
                                 <select class="form-control" name="role">
@@ -89,7 +89,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" id="btn-submit">Save changes</button>
             </div>
         </div>
         </div>
@@ -116,6 +116,10 @@
                 $("select[name='role']").val(data[3]);
 
                 $("#modalEdit").modal('show')
+            });
+
+            $('#btn-submit').on('click', function () {
+                $('#form-update').submit();
             });
         });
     </script>

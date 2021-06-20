@@ -33,7 +33,6 @@
                             <img src="{{ asset('thumbnails/'.$file->thumbnail)}}" alt="" class="w-100 mb-2" />
                             <div class="product-title">
                                 <blockquote class="blockquote">
-
                                     <strong class="mb-1">
                                         {{ Str::words($file->title, 5, ' ...') }}
                                     </strong>
