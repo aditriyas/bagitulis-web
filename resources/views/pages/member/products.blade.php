@@ -30,7 +30,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-12 my-1">
                     <a class="card card-dashboard-product d-block" href="{{ route('member.product.show', ['id' => $file->id ]) }}">
                         <div class="card-body">
-                            <img src="{{ asset('thumbnails/'.$file->thumbnail)}}" alt="" class="w-100 mb-2" />
+                            <img src="{{ asset('storage/thumbnails/'.$file->thumbnail)}}" alt="" class="w-100 mb-2" />
                             <div class="product-title">
                                 <blockquote class="blockquote">
 
