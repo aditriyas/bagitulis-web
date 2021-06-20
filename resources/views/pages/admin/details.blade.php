@@ -38,12 +38,12 @@
       <div class="container">
         <div class="row align-items-center row-login justify-content-center">
           <div class="col-lg-6 text-center">
-              <img src="{{ asset('thumbnails/'.$file->thumbnail) }}" alt="" class="mb-4 w-100 rounded" />
+              <img src="{{ asset('storage/thumbnails/'.$file->thumbnail) }}" alt="" class="mb-4 w-100 rounded" />
             <div class="products-text">
               <strong>{{ $file->title }}</strong>
             </div>
             <div class="products-price mt-2">by {{ $file->author }}</div>
-            <a href="{{ asset('files/'.$file->file) }}" target="_blank" class="btn btn-success w-50 mt-3">Download</a>
+            <a href="{{ asset('storage/files/'.$file->file) }}" target="_blank" class="btn btn-success w-50 mt-3">Download</a>
 
             @if (Auth::user()->role == "admin")
                 <a href="{{ route('admin.product.edit', ['id' => $file->id]) }}" class="btn btn-warning w-50 mt-3">Edit</a>

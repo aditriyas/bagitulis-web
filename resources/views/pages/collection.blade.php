@@ -18,7 +18,7 @@
                     <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
                         <a class="component-products d-block" href="{{ route('collection.show', ['id' => $file->id]) }}">
                             <div class="products-thumbnail">
-                                <div class="products-image" style="background-image: url('{{ asset('thumbnails/'.$file->thumbnail) }}');"></div>
+                                <div class="products-image" style="background-image: url('{{ asset('/storage/thumbnails/'.$file->thumbnail) }}');"></div>
                             </div>
                             <div class="products-text">{{$file->title}}</div>
                             <div class="products-price">by {{ $file->author }}</div>
