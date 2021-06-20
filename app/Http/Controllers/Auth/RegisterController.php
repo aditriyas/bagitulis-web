@@ -70,4 +70,10 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    public function redirectTo()
+    {
+        // session(['register' => 'success']);
+        return '/register-success?success=true';
+    }
 }

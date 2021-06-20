@@ -13,8 +13,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
+        $request->session()->forget('register');
         if (Auth::user()->role == "admin") {
             $files = File::all();
             return view('pages.admin.home', compact('files'));
