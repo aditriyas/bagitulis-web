@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -68,9 +69,23 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            'name' => 'required',
+            'role' => 'required',
+            'password' => 'nullable|min:6'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->with('error', $validator->errors());
+        }
+
+        $user = User::where('id', $request->id)->update(array_filter($request->except(['email', '_token', '_method'])));
+        if ($user) {
+            return redirect()->back()->with('success', 'Data berhasil disimpan');
+        }
+
     }
 
     /**

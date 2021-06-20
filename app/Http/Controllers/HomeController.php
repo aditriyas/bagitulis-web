@@ -15,10 +15,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $files = File::all();
         if (Auth::user()->role == "admin") {
+            $files = File::all();
             return view('pages.admin.home', compact('files'));
         }
+        $files = Auth::user()->files;
         return view('pages.member.products', compact('files'));
     }
 }
