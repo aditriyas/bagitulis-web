@@ -16,13 +16,13 @@
     <div class="section-content section-dashboard-home" data-aos="fade-up">
       <div class="container-fluid">
         <div class="dashboard-heading">
-          <h2 class="dashboard-title">Collections</h2>
-          <p class="dashboard-subtitle">People's writings</p>
+          <h2 class="dashboard-title">My Writings</h2>
+          <p class="dashboard-subtitle">Manage Your Writings & Uploads</p>
         </div>
         <div class="dashboard-content">
           <div class="row">
             <div class="col-12">
-              {{-- <a href="{{ route('member.product.create') }}" class="btn btn-success">Add New File</a> --}}
+              <a href="{{ route('member.product.create') }}" class="btn btn-success">Add New File</a>
             </div>
           </div>
           <div class="row mt-4">

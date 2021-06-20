@@ -11,6 +11,7 @@
 
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <link href="{{asset('style/main.css')}}" rel="stylesheet" />
+  <link href="{{asset('vendor/jquery-toastr/toastr.min.css')}}" rel="stylesheet" />
   <link rel="icon" type="image/png" href="{{asset('images/logo-title.svg')}}" />
 </head>
 
@@ -42,7 +43,7 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-4">
-            <form action="{{ route('register') }}" method="post" class="mt-3">
+            <form action="{{ route('register') }}" method="post" class="mt-3" id="form-register">
                 @csrf
               <div class="form-group">
                 <label>Full Name</label>
@@ -66,7 +67,7 @@
                 @enderror
               </div>
               <div class="form-group">
-                <label>Ulangi Password</label>
+                <label>Repeat Password</label>
                 <input type="password" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" />
                 @error('password_confirmation')
                     <small class="text-muted">{{ $message }}</small>
@@ -94,11 +95,59 @@
     </div>
   </footer>
   <!-- Bootstrap core JavaScript -->
-  <script src="{{asset('vendor/jquery/jquery.slim.min.js')}}"></script>
+  {{-- <script src="{{asset('vendor/jquery/jquery.slim.min.js')}}"></script> --}}
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset('vendor/jquery-toastr/toastr.min.js')}}"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
+    $(document).ready(function () {
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "2000",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
+        $("#form-register").submit(function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: "post",
+                url: "/register",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                statusCode: {
+                    201: function() {
+                        window.location='/register-success?success=true'
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    if (xhr.status == 422) {
+                        var response = xhr.responseJSON.errors
+                        $.each(response, function (field, msg) {
+                            $.each(msg, function (key, value) {
+                                toastr.error(value)
+                            });
+                        });
+                    } else {
+                        toastr.error('Error', errorThrown)
+                    }
+                }
+            });
+        });
+    });
   </script>
   <script src="{{asset('script/navbar-scroll.js')}}"></script>
 </body>
