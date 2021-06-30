@@ -16,7 +16,8 @@
                     <div class="products-text">
                         {{ $file->title }}
                     </div>
-                    <div class="products-price mt-2">by {{ $file->author }}</div>
+                    <div class="products-price mt-2 w-100">by {{ $file->author }}</div>
+                    <p class="mt-2">{{ $file->description }}</p>
                     <a href="{{ asset('storage/files/'.$file->file) }}" target="_blank" class="btn btn-success w-50 mt-3">Download</a>
                 </div>
             </div>

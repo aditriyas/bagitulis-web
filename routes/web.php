@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FileController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
-
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
+});
 // Halaman awal
 Route::get('/', function () {
     return view('pages.home');

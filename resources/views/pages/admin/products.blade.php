@@ -17,7 +17,7 @@
       <div class="container-fluid">
         <div class="dashboard-heading">
           <h2 class="dashboard-title">My Writings</h2>
-          <p class="dashboard-subtitle">Manage Your Writings & Uploads</p>
+          <p class="dashboard-subtitle">Manage Writings & Uploads</p>
         </div>
         <div class="dashboard-content">
           <div class="row mt-4">
@@ -29,11 +29,11 @@
                             <div class="product-title">
                                 <blockquote class="blockquote">
 
-                                    <strong class="mb-1">
+                                    <strong class="mb-2">
                                         {{ Str::words($file->title, 5, ' ...') }}
                                     </strong>
-                                    <footer class="blockquote-footer mt-0">{{ $file->author }}</footer>
-                                </blockquote>
+                                    <footer class="blockquote-footer mt-1">{{ $file->author }}</footer>
+                                  </blockquote>
                             </div>
                         </div>
                     </a>

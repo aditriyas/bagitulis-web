@@ -10,7 +10,7 @@
             <div class="container">
             <div class="row align-items-center row-home">
                 <div class="col-lg-6 text-center">
-                <img src="/images/home-pict.png" alt="" class="w-100 mb-4 mb-lg-none" />
+                <img src="{{ asset('images/home-pict.png') }}" alt="" class="w-100 mb-4 mb-lg-none" />
                 </div>
                 <div class="col-lg-5 ml-5">
                 <h2> Upload karya <br />tulis terbaikmu!

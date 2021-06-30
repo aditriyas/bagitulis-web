@@ -35,8 +35,8 @@
             Hi, {{ Auth::user()->name }}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/index.html">Home</a>
-            <a class="dropdown-item" href="/dashboard-products-update.html">Update Writings</a>
+            <a class="dropdown-item" href="{{ route('home') }}">Home</a>
+            <a class="dropdown-item" href="{{ route('collection') }}">Collections</a>
             <div class="dropdown-divider"></div>
             <a href="{{ route('logout') }}" class='dropdown-item' onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">Logout</a>
@@ -53,7 +53,7 @@
           <a class="nav-link" href="#"> Hi, {{ Auth::user()->name }} </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link d-inline-block" href="index.html"> Home </a>
+          <a class="nav-link d-inline-block" href="{{ route('home') }}"> Home </a>
         </li>
       </ul>
     </div>
