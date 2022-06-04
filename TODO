@@ -9,3 +9,15 @@ User Feature:
 Admin Feature:
     ✔ Manajemen User @done(21-06-20 13:10)
     ✔ Manajemen File @done(21-06-20 13:48)
+
+
+API Feature :
+    ☐ Login
+    ☐ Register
+    Admin:
+        ☐ Edit User
+        ☐ Edit & Delete Jurnal
+        ☐ Search Jurnal
+    Member:
+        ☐ CRUD Jurnal
+        ☐ Search Jurnal
